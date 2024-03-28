@@ -1,6 +1,6 @@
 package ait.imagga;
 
-import ait.imagga.dto.BackgroundColorDto;
+import ait.imagga.dto.ColorsDto;
 import ait.imagga.dto.ResponseDto;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -42,9 +42,9 @@ public class ImaggaAppl {
 
         System.out.println(response.getStatusCode());
         System.out.println(response.getHeaders().get("Content-type"));
-        List<BackgroundColorDto> list1 = response.getBody().getResult().getColors().getBackground_colors();
-        List<BackgroundColorDto> list2 = response.getBody().getResult().getColors().getImage_colors();
-        List<BackgroundColorDto> list3 = response.getBody().getResult().getColors().getForeground_colors();
+        List<ColorsDto> list1 = response.getBody().getResult().getColors().getBackground_colors();
+        List<ColorsDto> list2 = response.getBody().getResult().getColors().getImage_colors();
+        List<ColorsDto> list3 = response.getBody().getResult().getColors().getForeground_colors();
 
         System.out.println("Color name\t\tParent color name\t\tCoverage percent");
         printColors(list1);
@@ -53,7 +53,7 @@ public class ImaggaAppl {
 
     }
 
-    public static void printColors(List<BackgroundColorDto> list){
+    public static void printColors(List<ColorsDto> list){
 
         list.forEach(e -> {
             System.out.printf("%-20s\t%-20s\t%-20s\n", e.getClosest_palette_color(), e.getClosest_palette_color_parent(), e.getPercent());
